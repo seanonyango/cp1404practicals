@@ -12,6 +12,7 @@ def main():
 
 
 def print_data(data):
+    """Print data in specific format."""
     for element in data:
         print(f"{element[0]} is taught by {element[1]} and has {element[2]} students")
 
