@@ -8,9 +8,19 @@ CURRENT_YEAR = 2024
 
 def main():
     guitars = get_guitars_from_external_file()
-    guitars.sort(key=lambda guitar: guitar.year)
+    name = input("Name: ")
+    while not name == "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: "))
+        guitar = Guitar(name, year, cost)
+        guitars.append(guitar)
+        print(f"{guitar} added")
+        name = input("Name: ")
+    guitars.sort(key=lambda item: item.year)
     for guitar in guitars:
         print(guitar)
+    update_external_file(guitars)
+    print("Done")
 
 
 def get_guitars_from_external_file():
@@ -22,6 +32,12 @@ def get_guitars_from_external_file():
             guitar = Guitar(parts[0], int(parts[1]), float(parts[2]), CURRENT_YEAR)
             guitars.append(guitar)
         return guitars
+
+
+def update_external_file(guitars):
+    with open(INPUT_FILE, "w") as out_file:
+        for guitar in guitars:
+            out_file.writelines(f",".join([guitar.name, str(guitar.year), str(guitar.cost)]) + "\n")
 
 
 if __name__ == '__main__':
