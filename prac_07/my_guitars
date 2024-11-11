@@ -1,0 +1,28 @@
+# import csv
+
+from guitar import Guitar
+
+INPUT_FILE = "guitars.csv"
+CURRENT_YEAR = 2024
+
+
+def main():
+    guitars = get_guitars_from_external_file()
+    guitars.sort(key=lambda guitar: guitar.year)
+    for guitar in guitars:
+        print(guitar)
+
+
+def get_guitars_from_external_file():
+    with open(INPUT_FILE, "r") as in_file:
+        in_file.readline()
+        guitars = []
+        for line in in_file:
+            parts = line.strip().split(",")
+            guitar = Guitar(parts[0], int(parts[1]), float(parts[2]), CURRENT_YEAR)
+            guitars.append(guitar)
+        return guitars
+
+
+if __name__ == '__main__':
+    main()
