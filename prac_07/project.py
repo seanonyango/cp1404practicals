@@ -6,7 +6,7 @@ class Project:
         self.name = name
         self.start_date = datetime.datetime.strptime(start_date, "%d/%m/%Y").date()
         self.priority = priority
-        self.cost_estimate = cost_estimate
+        self.cost_estimate = float(cost_estimate)
         self.completion_percent = completion_percent
 
     def __str__(self):
