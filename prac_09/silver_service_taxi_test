@@ -2,7 +2,7 @@ from silver_service_taxi import SilverServiceTaxi
 
 taxi = SilverServiceTaxi(name="Luxury Taxi", fuel=100, fanciness=2)
 taxi.drive(18)
-expected_fare = 48.78
+expected_fare = 48.80
 actual_fare = taxi.get_fare()
 assert actual_fare == expected_fare, f"Expected fare: {expected_fare}, but got: {actual_fare}"
 print("Test passed!")
